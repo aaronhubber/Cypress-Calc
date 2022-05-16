@@ -40,10 +40,10 @@ describe("Calculator", () => {
   })
 
   it('should demonstrate an exceptional circumstance, 10/0', () => {
-    cy.get('#number1').click();
-    cy.get('#number0').click();
+    cy.get('#number5').click();
     cy.get('#operator-divide').click();
     cy.get('#number0').click();
-    cy.get('.display').should('contain', 'Infinity')
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', 'Infinity Never!!')
   })
 })

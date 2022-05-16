@@ -31,6 +31,11 @@ function App() {
     setRunningTotal(runningTotal + ".")
   }
 
+  // const handleImpossible = () =>{
+  //   if (runningTotal===Infinity)
+  //   return "Infinity"
+  // }
+
   const clearClick = () => {
     if (runningTotal === 0) {
       setPreviousOperator(null);
@@ -93,9 +98,12 @@ function App() {
   }
 
   const divide = (number) => {
+    if (number ===0){
+      setRunningTotal("Infinity Never!!")}
+    else {
     let calculatedNumber = parseFloat(previousTotal) / parseFloat(number);
     setRunningTotal(calculatedNumber);
-    setCalculatedTotal(calculatedNumber);
+    setCalculatedTotal(calculatedNumber)};
   }
 
 

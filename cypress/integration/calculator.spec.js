@@ -40,7 +40,14 @@ describe("Calculator", () => {
     cy.get('.display').should('contain', '3')
   })
 
-  it('should be able to chain arithmatic functions', () => {
+  it('should be able to chain multiple aritmatic functions', () =>{
+    cy.get('#number2').click();
+    cy.get('#operator-add').click();
+    cy.get('#operator-add').click();
+    cy.get('.display').should('contain', '4')
+  })
+
+  it('should be able to add multiple arithmatic functions', () => {
     cy.get('#number2').click();
     cy.get('#operator-add').click();
     cy.get('#number2').click();
@@ -63,6 +70,28 @@ describe("Calculator", () => {
     cy.get('.display').should('contain', '7.3')
   })
 
+  it('should handle very large numbers', () => {
+    cy.get('#number1').click();
+    cy.get('#number0').click();
+    cy.get('#number0').click();
+    cy.get('#number0').click();
+    cy.get('#number0').click();
+    cy.get('#number0').click();
+    cy.get('#number0').click();
+    cy.get('#operator-divide').click();
+    cy.get('#number5').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '200000')
+  })
+
+  it('should handle negative numbers', () => {
+    cy.get('#number3').click();
+    cy.get('#operator-subtract').click();
+    cy.get('#number7').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '-4')
+  })
+
   it('should demonstrate an exceptional circumstance, 10/0', () => {
     cy.get('#number5').click();
     cy.get('#operator-divide').click();
@@ -71,3 +100,4 @@ describe("Calculator", () => {
     cy.get('.display').should('contain', 'Infinity Never!!')
   })
 })
+
